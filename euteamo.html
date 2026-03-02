@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Razões para amar você</title>
+
+<style>
+
+body{
+    background-color: rgb(223, 193, 210);
+    color: rgb(54, 49, 44);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.container{
+    max-width: 800px;
+    text-align: center;
+    padding: 30px;
+}
+
+.texto{
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+img{
+    display: block;
+    margin: 20px auto;
+    max-width: 100%;
+    border-radius: 15px;
+}
+
+button{
+    background-color: rgb(180, 120, 160);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover{
+    background-color: rgb(150, 90, 130);
+}
+
+/* TEXTO TE AMO */
+.teamo{
+    font-size: 50px;
+    color: white;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    animation: aparecer 1s ease forwards;
+}
+
+@keyframes aparecer{
+    from {opacity: 0; transform: translate(-50%, -60%);}
+    to {opacity: 1; transform: translate(-50%, -50%);}
+}
+
+/* CORAÇÕES */
+.heart{
+    position: fixed;
+    color: red;
+    font-size: 24px;
+    animation: subir 4s linear forwards;
+}
+
+@keyframes subir{
+    from{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(-800px);
+        opacity: 0;
+    }
+}
+
+/* BRILHINHOS */
+.sparkle{
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    animation: brilhar 2s infinite alternate;
+    opacity: 0.8;
+}
+
+@keyframes brilhar{
+    from {opacity: 0.2; transform: scale(1);}
+    to {opacity: 1; transform: scale(1.5);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Feliz Aniversário Igor! 💖</h1>
+
+<h2>Você deixa os meus dias muito mais felizes e eu amo amar você.</h2>
+
+<img src="igoregabi.jpg" alt="Imagem do site">
+
+<p class="texto">
+Eu sou muito feliz em ter você na minha vida de volta e poderia citar mil razões
+do porquê é tão gostoso e agradável ter você comigo, só pra mim.
+<br><br>
+Pensando bem... Acho que a melhor razão para te amar, é o fato de você ser você. 
+É natural amar você. ❤️
+<br><br>
+Obrigada por existir na minha vida e ser uma pessoa tão doce, amorosa e gentil.
+<br><br>
+Ter você é a maior sorte que alguém pode ter e eu não quero te perder nunca mais!
+</p>
+
+<img src="nois.jpg" alt="Nós dois">
+
+<br>
+
+<button onclick="surpresa()">Surpresa 🎁</button>
+
+</div>
+
+<div class="teamo" id="teamo">TE AMO ❤️</div>
+
+<!-- ÁUDIO -->
+<audio id="musica" preload="auto">
+    <source src="lucy.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// Função da surpresa: corações + TE AMO + música
+function surpresa(){
+    document.getElementById("teamo").style.display = "block";
+
+    let musica = document.getElementById("musica");
+
+    // Tocar música de forma compatível com navegadores
+    musica.play().then(() => {
+        musica.currentTime = 175; // começar em 2:55
+    }).catch((erro) => {
+        console.log("Erro ao tocar música:", erro);
+    });
+
+    // Corações subindo
+    for(let i = 0; i < 40; i++){
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.classList.add("heart");
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "0px";
+        heart.style.fontSize = (20 + Math.random() * 30) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+    }
+}
+
+</script>
+
+</body>
+</html>
